@@ -1,0 +1,89 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	{
+            "path" : "pages/user/user",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/find/find",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+				
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/home",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false,
+				// #ifdef APP-PLUS
+							"navigationStyle":"custom",
+							// #endif
+							"h5": {
+								"titleNView": false
+							}
+            }
+            
+        }
+        ,{
+            "path" : "pages/kind/kind",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#3D4C46",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [
+			{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/icons/home.png",
+				"selectedIconPath": "static/icons/home-active.png",
+				"text": "首页"
+			}, 
+			{
+				"pagePath": "pages/kind/kind",
+				"iconPath": "static/icons/kind.png",
+				"selectedIconPath": "static/icons/kind-active.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/find/find",
+				"iconPath": "static/icons/find.png",
+				"selectedIconPath": "static/icons/find-active.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/icons/mine.png",
+				"selectedIconPath": "static/icons/mine-active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"h5": {
+			"titleNView": false
+		}
+	}
+}
