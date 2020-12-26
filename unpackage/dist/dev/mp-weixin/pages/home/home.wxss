@@ -134,6 +134,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 26rpx;
 }
 .new.data-v-92bb8f34 {
   padding: 0 30rpx;
@@ -148,6 +149,8 @@
   overflow: auto;
 }
 .new .list .item.data-v-92bb8f34 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 40rpx;
   width: 590rpx;
   height: 260rpx;
@@ -161,10 +164,86 @@
           align-items: center;
   -webkit-flex-shrink: 0;
           flex-shrink: 0;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.new .list .item .des.data-v-92bb8f34 {
+  overflow: hidden;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.new .list .item .des .name.data-v-92bb8f34 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .new .list .item image.data-v-92bb8f34 {
   display: block;
   width: 194rpx;
   height: 168rpx;
+  margin-right: 20px;
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+}
+.like .title.data-v-92bb8f34 {
+  margin-bottom: 30rpx;
+}
+.like .list.data-v-92bb8f34 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding: 30rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.like .list .item.data-v-92bb8f34 {
+  width: 324rpx;
+  background-color: #fff;
+  height: 418rpx;
+  margin: 20rpx 0;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.like .list .item image.data-v-92bb8f34 {
+  width: 100%;
+  height: 238rpx;
+}
+.like .list .item .des.data-v-92bb8f34 {
+  padding: 36rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.like .list .item .name.data-v-92bb8f34 {
+  line-height: 19px;
+  margin-top: 4px;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+}
+.like .list .item .price.data-v-92bb8f34 {
+  font-size: 26rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
 }
 

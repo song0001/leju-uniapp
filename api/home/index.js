@@ -37,7 +37,13 @@ function latestProducts(start,limit,data){
 		data:data
 	})
 }
- 
+ // 最高销量推荐
+ function saleMostProducts(data){
+ 	return request({
+ 		url:`/lejuClient/home/saleMostProducts`,
+ 		data:data
+ 	})
+ }
 export {
-	bannerAds,findAllCategory,recommendList,hotList,latestProducts
+	bannerAds,findAllCategory,recommendList,hotList,latestProducts,saleMostProducts
 }

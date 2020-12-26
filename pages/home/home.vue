@@ -69,7 +69,9 @@
 				<view class="item" v-for="item in latestProducts" :key="item.id">
 					<image :src="item.pic" mode=""></image>
 					<view class="des">
+						<view class="name">		
 						{{item.name}}
+						</view>
 						<view class="">
 							价格:{{item.price}}
 						</view>
@@ -79,8 +81,30 @@
 		</view>
 		
 <!-- 猜你喜欢 -->
-   <view class="">
-   	
+   <view class="like">
+   	 <view class="title">
+   	 	猜你喜欢
+   	 </view>
+	 <view class="list">
+	 	<view class="item" v-for="item in saleMostProducts" :key='item.id'>
+	 		<image :src="item.pic" mode=""></image>
+			<view class="des">
+				
+			<view class="name">
+				{{item.brandName}}
+			</view>
+			<view class="price">
+				<view class="">
+				¥{{item.price}} 	
+				</view>
+				<view class="">
+					   乐居
+				</view>
+			</view>
+				  
+			</view>
+	 	</view>
+	 </view>
    </view>
 		
 	</view>
@@ -92,7 +116,8 @@
 		findAllCategory,
 		recommendList,
 		hotList,
-		latestProducts
+		latestProducts,
+		saleMostProducts
 	} from '../../api/home/index'
 	export default {
 		data() {
@@ -107,7 +132,8 @@
 				category: [],
 				recommendList: [],
 				hotList: [],
-				latestProducts: []
+				latestProducts: [],
+				saleMostProducts:[]
 			};
 		},
 		methods: {
@@ -127,13 +153,18 @@
 					this.recommendList = res.data.items
 				})
 			hotList().then(res => {
-				console.log(res)
+				// console.log(res)
 				this.hotList = res.data.items
 			})
 			latestProducts(1, 14).then(res => {
-				console.log(res)
+				// console.log(res)
 				this.latestProducts = res.data.rows
 			})
+			saleMostProducts().then(res=>{
+				// console.log(res)
+				this.saleMostProducts=res.data.items
+			}
+				)
 		},
 	}
 </script>
@@ -261,6 +292,7 @@
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
+				font-size: 26rpx;
 			}
 		}
 	}
@@ -275,6 +307,7 @@
            display: flex;
 			overflow: auto;
 			.item{
+				box-sizing: border-box;
 				padding: 40rpx;
 				width: 590rpx;	
 				height:260rpx;
@@ -284,12 +317,71 @@
 				align-items: center;
 				// flex: 0 0 auto;
 				flex-shrink: 0;
+				   border-radius: 10rpx;
+					.des{	
+						overflow: hidden;
+					
+						height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					.name{
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+						}
 			image {
 					display: block;		
 					width: 194rpx;
 					height: 168rpx;
+					margin-right: 20px;
+					flex-shrink: 0;
+					border-radius: 8rpx;
 				}
 			}
 		}
 	}
+	.like{
+		.title{
+			margin-bottom: 30rpx;
+		}
+		.list{
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding:30rpx ;
+			box-sizing: border-box;
+		
+			.item{
+				width:324rpx;
+				background-color: #fff;
+				height: 418rpx;
+				margin: 20rpx 0;
+				border-radius: 10rpx;
+				image{
+					width: 100%;
+					height: 238rpx;
+				}
+				.des{
+					padding: 36rpx;
+					box-sizing: border-box;
+					}
+					.name{
+						line-height: 19px;
+						    margin-top: 4px;
+						    font-weight: 700;
+							margin-bottom: 20rpx;
+							font-size: 26rpx
+						}
+				.price{
+					font-size: 26rpx;
+					display: flex;
+					justify-content: space-between;
+				}
+				}
+			}
+	}
+	
 </style>

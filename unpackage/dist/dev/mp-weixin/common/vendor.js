@@ -1935,6 +1935,114 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 17:
+/*!*********************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/home/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.bannerAds = bannerAds;exports.findAllCategory = findAllCategory;exports.recommendList = recommendList;exports.hotList = hotList;exports.latestProducts = latestProducts;exports.saleMostProducts = saleMostProducts;var _request = _interopRequireDefault(__webpack_require__(/*! ../request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 1.查询轮播广告
+function bannerAds(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/home/bannerAds",
+    data: data });
+
+}
+
+// 查询所有分类
+function findAllCategory(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/productCategory/findAllCategory",
+    data: data });
+
+}
+
+// 限时活动列表
+function recommendList(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/home/recommendList",
+    data: data });
+
+}
+
+// 热门推荐
+function hotList(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/home/hotList",
+    data: data });
+
+}
+// 新品推荐
+function latestProducts(start, limit, data) {
+  return (0, _request.default)({
+    url: "/lejuClient/home/latestProducts/".concat(start, "/").concat(limit),
+    data: data });
+
+}
+// 最高销量推荐
+function saleMostProducts(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/home/saleMostProducts",
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 18:
+/*!******************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/request.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _baseUrl = _interopRequireDefault(__webpack_require__(/*! ./baseUrl */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var fun = function fun(config) {
+  return new Promise(function (resolve, rejected) {
+    var obj = {
+      url: _baseUrl.default + config.url,
+      method: config.method ? config.method.toUpperCase() : "GET",
+      data: config.data,
+      timeout: 5000,
+      success: function success(res) {
+        resolve(res.data);
+      },
+      fail: function fail(res) {
+        rejected(res);
+      } };
+
+    // if(config.method){ // get / post
+    //   if(config.method.toUpperCase() == "POST"){
+    //     obj.header['content-type'] = "application/x-www-form-urlencoded"
+    //   }
+    // }
+    uni.request(obj);
+  });
+};var _default =
+
+fun;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 19:
+/*!******************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/baseUrl.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = "https://leju.bufan.cloud";exports.default = _default;
+
+/***/ }),
+
 /***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
@@ -8013,107 +8121,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 36:
-/*!*********************************************************!*\
-  !*** C:/Users/song/Desktop/leju/leju/api/home/index.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.bannerAds = bannerAds;exports.findAllCategory = findAllCategory;exports.recommendList = recommendList;exports.hotList = hotList;exports.latestProducts = latestProducts;var _request = _interopRequireDefault(__webpack_require__(/*! ../request.js */ 37));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 1.查询轮播广告
-function bannerAds(data) {
-  return (0, _request.default)({
-    url: "/lejuClient/home/bannerAds",
-    data: data });
-
-}
-
-// 查询所有分类
-function findAllCategory(data) {
-  return (0, _request.default)({
-    url: "/lejuClient/productCategory/findAllCategory",
-    data: data });
-
-}
-
-// 限时活动列表
-function recommendList(data) {
-  return (0, _request.default)({
-    url: "/lejuClient/home/recommendList",
-    data: data });
-
-}
-
-// 热门推荐
-function hotList(data) {
-  return (0, _request.default)({
-    url: "/lejuClient/home/hotList",
-    data: data });
-
-}
-// 新品推荐
-function latestProducts(start, limit, data) {
-  return (0, _request.default)({
-    url: "/lejuClient/home/latestProducts/".concat(start, "/").concat(limit),
-    data: data });
-
-}
-
-/***/ }),
-
-/***/ 37:
-/*!******************************************************!*\
-  !*** C:/Users/song/Desktop/leju/leju/api/request.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _baseUrl = _interopRequireDefault(__webpack_require__(/*! ./baseUrl */ 38));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-var fun = function fun(config) {
-  return new Promise(function (resolve, rejected) {
-    var obj = {
-      url: _baseUrl.default + config.url,
-      method: config.method ? config.method.toUpperCase() : "GET",
-      data: config.data,
-      timeout: 5000,
-      success: function success(res) {
-        resolve(res.data);
-      },
-      fail: function fail(res) {
-        rejected(res);
-      } };
-
-    // if(config.method){ // get / post
-    //   if(config.method.toUpperCase() == "POST"){
-    //     obj.header['content-type'] = "application/x-www-form-urlencoded"
-    //   }
-    // }
-    uni.request(obj);
-  });
-};var _default =
-
-fun;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
-/***/ 38:
-/*!******************************************************!*\
-  !*** C:/Users/song/Desktop/leju/leju/api/baseUrl.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = "https://leju.bufan.cloud";exports.default = _default;
-
-/***/ }),
-
 /***/ 4:
 /*!**************************************************!*\
   !*** C:/Users/song/Desktop/leju/leju/pages.json ***!
@@ -8122,6 +8129,51 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+
+/***/ 40:
+/*!*********************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/kind/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.findAllCategory = findAllCategory;var _request = _interopRequireDefault(__webpack_require__(/*! ../request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 1查询所有分类
+function findAllCategory(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/productCategory/findAllCategory",
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 45:
+/*!*********************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/find/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.findBrandsByPage = findBrandsByPage;exports.findArticleByPage = findArticleByPage;var _request = _interopRequireDefault(__webpack_require__(/*! ../request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 品牌列表
+function findBrandsByPage(start, limit, data) {
+  return (0, _request.default)({
+    url: "/lejuClient/brand/findBrandsByPage/".concat(start, "/").concat(limit),
+    data: data });
+
+}
+// 文章查询列表
+function findArticleByPage(start, limit, data) {
+  return (0, _request.default)({
+    url: "/lejuClient/productArticle/findArticleByPage/".concat(start, "/").concat(limit),
+    data: data });
+
+}
 
 /***/ })
 

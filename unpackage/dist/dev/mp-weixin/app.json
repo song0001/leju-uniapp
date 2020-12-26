@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/user/user",
     "pages/find/find",
-    "pages/home/home",
     "pages/kind/kind"
   ],
   "subPackages": [],
