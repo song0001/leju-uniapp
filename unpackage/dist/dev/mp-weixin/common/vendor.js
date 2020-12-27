@@ -8121,37 +8121,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 4:
-/*!**************************************************!*\
-  !*** C:/Users/song/Desktop/leju/leju/pages.json ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 40:
-/*!*********************************************************!*\
-  !*** C:/Users/song/Desktop/leju/leju/api/kind/index.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.findAllCategory = findAllCategory;var _request = _interopRequireDefault(__webpack_require__(/*! ../request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 1查询所有分类
-function findAllCategory(data) {
-  return (0, _request.default)({
-    url: "/lejuClient/productCategory/findAllCategory",
-    data: data });
-
-}
-
-/***/ }),
-
-/***/ 45:
+/***/ 34:
 /*!*********************************************************!*\
   !*** C:/Users/song/Desktop/leju/leju/api/find/index.js ***!
   \*********************************************************/
@@ -8174,6 +8144,77 @@ function findArticleByPage(start, limit, data) {
     data: data });
 
 }
+
+/***/ }),
+
+/***/ 4:
+/*!**************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/pages.json ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 43:
+/*!*********************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/kind/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.findAllCategory = findAllCategory;var _request = _interopRequireDefault(__webpack_require__(/*! ../request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 1查询所有分类
+function findAllCategory(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/productCategory/findAllCategory",
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 62:
+/*!****************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/login.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var obj = {
+  onShow: function onShow() {
+    var token = uni.getStorageSync("token");
+    if (token) {
+
+    } else {
+      uni.showModal({
+        title: "登录提示",
+        content: "暂未登录，是否立即登录",
+        success: function success(res) {
+          console.log(res);
+          if (res.confirm) {
+            uni.navigateTo({
+              url: "/pages/user/login/login" });
+
+            // uni.showToast({
+            // 	title:"跳转到登录界面",	
+            // })
+          } else {
+            uni.showToast({
+              title: "取消了" });
+
+          }
+        } });
+
+    }
+  } };var _default =
+
+obj;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

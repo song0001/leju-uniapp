@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/user/user",
     "pages/find/find",
-    "pages/kind/kind"
+    "pages/kind/kind",
+    "pages/user/login/login"
   ],
   "subPackages": [],
   "window": {

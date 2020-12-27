@@ -1,7 +1,11 @@
 <template>
 	<view>
+		<view class="tops">
+			<image src="../../static/icons/search.png" mode=""></image>
+			<image src="../../static/icons/cart.png" mode=""></image>
+		</view>
 		<view class="uni-padding-wrap">
-			<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper indicator-active-color="rgb(216, 216, 216)" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item v-for="item in list" :key='item.id'>
 					<view>
 						<image class="img" :src="item.pic" mode=""></image>
@@ -49,7 +53,7 @@
 			<view class="title">
 				热门推荐
 			</view>
-			<swiper circular="true" display-multiple-items="3" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper circular="true"  easing-function="easeOutCubic" display-multiple-items="3" :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item v-for="item in hotList" :key="item.id">
 					<view class="item">
 						<image :src="item.pic" mode=""></image>
@@ -125,7 +129,7 @@
 
 				indicatorDots: true,
 				autoplay: true,
-				interval: 2000,
+				interval:2000,
 				duration: 500,
 				circular: true,
 				list: [],
@@ -170,6 +174,22 @@
 </script>
 
 <style lang="scss" scoped>
+	.tops{
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: calc(100% - 30px);
+		    z-index: 9999;
+			display: flex;
+			    align-items: center;
+				    justify-content:flex-end;
+				    padding: 30rpx;
+					image{
+						    width: 42rpx;
+						    height: 42rpx;
+							margin-left: 46rpx;
+						}
+		}
 	.uni-padding-wrap {
 		height: 360rpx;
 
@@ -281,6 +301,7 @@
 		swiper swiper-item {
 			width: 208rpx;
 			height: 100%;
+			margin: 0 20rpx;
 
 			image {
 				width: 208rpx;
@@ -293,6 +314,7 @@
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				font-size: 26rpx;
+				text-align: center;
 			}
 		}
 	}
@@ -344,14 +366,15 @@
 	}
 	.like{
 		.title{
-			margin-bottom: 30rpx;
+			padding: 30rpx;
+			// margin-bottom: 30rpx;
 		}
 		.list{
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			padding:30rpx ;
+			padding:0 30rpx ;
 			box-sizing: border-box;
 		
 			.item{

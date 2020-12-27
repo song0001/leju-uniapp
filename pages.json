@@ -1,42 +1,44 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-	{
-	    "path" : "pages/home/home",
-	    "style" :                                                                                    
-	    {
-	        "navigationBarTitleText": "乐居",
-	        "enablePullDownRefresh": false,
-			// #ifdef APP-PLUS
-						"navigationStyle":"custom",
-						// #endif
-						"h5": {
-							"titleNView": false
-						}
-	    }
-	    
-	}
-	,
-	{
-            "path" : "pages/user/user",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/find/find",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-				
-            }
-            
-        }
-        ,{
-            "path" : "pages/kind/kind",
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false,
+				// #ifdef APP-PLUS
+				"navigationStyle": "custom",
+				// #endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/find/find",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+
+			}
+
+		}, {
+			"path": "pages/kind/kind",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	    ,{
+            "path" : "pages/user/login/login",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
@@ -47,17 +49,16 @@
     ],
 
 	"tabBar": {
-	    "color": "#7A7E83",
-	    "selectedColor": "#3D4C46",
-	    "borderStyle": "black",
-	    "backgroundColor": "#ffffff",
-	    "list": [
-			{
+		"color": "#7A7E83",
+		"selectedColor": "#3D4C46",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
 				"pagePath": "pages/home/home",
 				"iconPath": "static/icons/home.png",
 				"selectedIconPath": "static/icons/home-active.png",
 				"text": "首页"
-			}, 
+			},
 			{
 				"pagePath": "pages/kind/kind",
 				"iconPath": "static/icons/kind.png",
@@ -83,6 +84,7 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
+		// 编译到h5平台去掉页面标题
 		"h5": {
 			"titleNView": false
 		}
