@@ -135,8 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -367,14 +366,15 @@ var _index = __webpack_require__(/*! ../../api/home/index */ 17); //
 //
 //
 //
-//
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, circular: true, list: [], category: [], recommendList: [], hotList: [], latestProducts: [], saleMostProducts: [] };}, methods: {}, onLoad: function onLoad() {var _this = this;(0, _index.bannerAds)().then(function (res) {// console.log(res);
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, circular: true, list: [], category: [], recommendList: [], hotList: [], latestProducts: [], saleMostProducts: [] };}, methods: { // 跳转到商品详情
+    goGoodsInfo: function goGoodsInfo(ids) {console.log(ids);uni.navigateTo({ url: "../goodsInfo/goodsInfo?id=".concat(ids) });}, // 跳转到商品列表页
+    goGoodsList: function goGoodsList(ids) {console.log(ids);uni.navigateTo({ url: "../kind/kindList/kindList?id=".concat(ids) });} }, onLoad: function onLoad() {var _this = this;(0, _index.bannerAds)().then(function (res) {// console.log(res);
       _this.list = res.data.items;}), (0, _index.findAllCategory)().then(function (res) {// console.log(res)
       _this.category = res.data.items[0].children;}), (0, _index.recommendList)().then(function (res) {// console.log(res)
-      _this.recommendList = res.data.items;});(0, _index.hotList)().then(function (res) {// console.log(res)
-      _this.hotList = res.data.items;});(0, _index.latestProducts)(1, 14).then(function (res) {// console.log(res)
+      _this.recommendList = res.data.items;});(0, _index.hotList)().then(function (res) {console.log(res);_this.hotList = res.data.items;});(0, _index.latestProducts)(1, 14).then(function (res) {// console.log(res)
       _this.latestProducts = res.data.rows;});(0, _index.saleMostProducts)().then(function (res) {// console.log(res)
       _this.saleMostProducts = res.data.items;});} };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 17 */,

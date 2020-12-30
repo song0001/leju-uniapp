@@ -28,20 +28,30 @@
 </template>
 
 <script>
+	import {doLogin} from "../../../api/user/login/index.js"
 	export default {
 		data() {
 			return {
-				value: 17596496508,
-				pwd: 123456
+				value:'18337351522',
+				pwd:'123456'
 			};
 		},
 		methods:{
 			// 点击登录
 			login(){
-			uni.setStorageSync("token","18337351522")
-				uni.switchTab({
-					url:'../user'
-					})
+				console.log(this.value)
+				doLogin({
+                password:this.pwd,
+                username:this.value
+                    }).then(res=>{
+					console.log(res)
+					uni.setStorageSync("token",res.data.token)
+						uni.switchTab({
+							url:'../user'
+							})
+				})
+				
+		
 				}
 			}
 	}

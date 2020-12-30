@@ -15,8 +15,7 @@
 		</view>
 		<!-- 创意 风格 -->
 		<view class="section-kind">
-			<view class="kind-item" v-for="item in category" :key='item.id'>
-
+			<view class="kind-item" v-for="item in category" :key='item.id' @tap="goGoodsList(item.id)">
 				<image :src="item.icon" mode=""></image>
 				<view class="">
 					{{item.name}}
@@ -33,7 +32,7 @@
 				限时活动:
 			</view>
 			<swiper circular="true" vertical='true' :autoplay="autoplay" :interval="interval" :duration="duration">
-				<swiper-item v-for="item in recommendList" :key="item.recommendId">
+				<swiper-item v-for="item in recommendList" :key="item.recommendId" @tap="goGoodsInfo(item.productId)">
 					<view class="name">
 						{{item.name}}
 					</view>
@@ -54,7 +53,7 @@
 				热门推荐
 			</view>
 			<swiper circular="true"  easing-function="easeOutCubic" display-multiple-items="3" :autoplay="autoplay" :interval="interval" :duration="duration">
-				<swiper-item v-for="item in hotList" :key="item.id">
+				<swiper-item v-for="item in hotList" :key="item.id" @tap="goGoodsInfo(item.id)">
 					<view class="item">
 						<image :src="item.pic" mode=""></image>
 						<view class="name">
@@ -70,7 +69,7 @@
 				新品推荐
 			</view>
 			<view class="list">
-				<view class="item" v-for="item in latestProducts" :key="item.id">
+				<view class="item" v-for="item in latestProducts" :key="item.id"  @tap="goGoodsInfo(item.id)">
 					<image :src="item.pic" mode=""></image>
 					<view class="des">
 						<view class="name">		
@@ -90,7 +89,7 @@
    	 	猜你喜欢
    	 </view>
 	 <view class="list">
-	 	<view class="item" v-for="item in saleMostProducts" :key='item.id'>
+	 	<view class="item" v-for="item in saleMostProducts" :key='item.id'  @tap="goGoodsInfo(item.id)">
 	 		<image :src="item.pic" mode=""></image>
 			<view class="des">
 				
@@ -141,7 +140,20 @@
 			};
 		},
 		methods: {
-
+			// 跳转到商品详情
+goGoodsInfo(ids){
+	 console.log(ids)
+	 uni.navigateTo({
+	 	url:`../goodsInfo/goodsInfo?id=${ids}`
+	 	})
+	},
+	// 跳转到商品列表页
+	goGoodsList(ids){
+		 console.log(ids)
+		uni.navigateTo({
+			url:`../kind/kindList/kindList?id=${ids}`
+			})
+		}
 		},
 		onLoad() {
 			bannerAds().then(res => {
@@ -157,7 +169,7 @@
 					this.recommendList = res.data.items
 				})
 			hotList().then(res => {
-				// console.log(res)
+				console.log(res)
 				this.hotList = res.data.items
 			})
 			latestProducts(1, 14).then(res => {

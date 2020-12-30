@@ -26,8 +26,8 @@
 							<image src="../../static/icons/view.png" mode=""></image>
 							{{item.viewCount}}
 						</view>
-						<view class="right" @tap='collect(item,index)'>
-							<image v-if="isCollect" src="../../static/icons/collect1.png" mode=""></image>
+						<view class="right" :data-index="index"  @tap='collect'>
+							<image v-if="collect_index==index" src="../../static/icons/collect1.png" mode=""></image>
 							<image v-else src="../../static/icons/collect1-active.png" mode=""></image>
 						</view>
 					</view>
@@ -68,7 +68,8 @@
 				list1: [],
 				list2: [],
 				isShow: 'wz',
-				isCollect: 1
+				isCollect: true,
+				collect_index:""
 			};
 		},
 		methods: {
@@ -93,10 +94,13 @@
 				})
 			},
 			// 收藏
-			collect(item, index) {
+			collect(e) {
 				// console.log(item,index)
 
-				this.isCollect = item.zanCount
+this.collect_index=e.currentTarget.dataset.index
+				
+				console.log(e.currentTarget.dataset.index) 
+				this.isCollect =!false
 			}
 		},
 		onLoad() {

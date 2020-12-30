@@ -13,9 +13,7 @@ var obj = {
 						uni.navigateTo({
 							url:"/pages/user/login/login"
 						})
-						// uni.showToast({
-						// 	title:"跳转到登录界面",	
-						// })
+						
 					}else{
 						uni.showToast({
 							title:"取消了"

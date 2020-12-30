@@ -8,6 +8,9 @@ var fun = function(config){
       method:config.method ?  config.method.toUpperCase() : "GET",
       data:config.data,
       timeout:5000,
+	  header:{
+		  token:uni.getStorageSync('token'),
+		  },
       success(res){
         resolve(res.data)
       },

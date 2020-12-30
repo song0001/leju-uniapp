@@ -3,14 +3,16 @@
 		<!-- 登录时显示头像 -->
 		<view class="header" v-if="isShow">
 			<view class="login">
-				<view class="avator">
-					<open-data></open-data>
+				<view class="avator" @tap=goUpdateUserInfo>
+					<image :src="icon" mode=""></image>
 				</view>
 				<view class="info">
-					<view class="">
-						ceshi
+					<view class="nickname">
+						{{nickname}}
 					</view>
-					用户名:11515211
+					<view class="username">
+					用户名:{{username}}	
+					</view>
 				</view>
 			</view>
 		</view>
@@ -107,7 +109,7 @@
 					卡包
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" @tap='goCar'>
 				<image src="../../static/icons/cart2.png" mode=""></image>
 				<view class="title">
 					购物车
@@ -125,23 +127,47 @@
 
 <script>
 	import login from "../../api/login.js"
+	import {getMemberInfo} from "../../api/user/index.js"
 	export default {
 		data() {
 			return {
-				isShow: false
+				isShow: false,
+				nickname:'',
+				username:'',
+				icon:''
 			};
 		},
 		methods:{
+			// 点击登录
 			login(){
 				// this.isShow=true
 				uni.navigateTo({
 					url:"./login/login"
 				})
-				}
+				},
+				// 点击修改用户信息
+				goUpdateUserInfo(){
+					uni.navigateTo({
+						url:"./updateUserInfo/updateUserInfo"
+					})
+					},
+					// 点击跳转到购物车
+					goCar(){
+						uni.navigateTo({
+							url:"./car/car"
+						})
+						}
 			},
 	     onShow(){
 			 var token=uni.getStorageSync("token")
 			 if(token){
+				 getMemberInfo().then(res=>{
+					 console.log(res)
+					// uni.setStorageSync("UserInfo",res.data.userInfo)
+					 this.nickname=res.data.userInfo.nickname
+					 this.username=res.data.userInfo.username
+					 this.icon=res.data.userInfo.icon
+					 })
 				 this.isShow=true
 				 }
 			login.onShow()
@@ -170,12 +196,26 @@
 		border-radius: 50%;
 		background-color: blue;
 		margin-right: 32rpx;
+		overflow: hidden;
+		image{
+			width: 100%;
+			height: 100%;
+			}
 	}
 	.info{
 		display: flex;
 		    font-size: 14px;
 		flex-direction: column;
 		justify-content: center;
+		.username{
+			    font-size: 26rpx;
+			    color: #999;
+		}
+		.nickname{
+			font-size: 40rpx;
+			font-weight: 600;
+		}
+		   
 		}
 	}
 	// 未登录
@@ -189,6 +229,7 @@
 				border-radius: 50%;
 				background-color: #c8c7cc;
 				margin-right: 32rpx;
+			
 			}
 
 			.tishi {

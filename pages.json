@@ -17,28 +17,83 @@
 		{
 			"path": "pages/user/user",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false,
+				"h5": {
+					"titleNView": false
+				}
 			}
 
 		}, {
 			"path": "pages/find/find",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false,
+				"h5": {
+					"titleNView": false
+				}
 
 			}
 
 		}, {
 			"path": "pages/kind/kind",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false,
+				"h5": {
+					"titleNView": false
+				}
 			}
 
 		}
 	    ,{
             "path" : "pages/user/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/kind/kindList/kindList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+				// "navigationBarBackgroundColor":"#354e44"
+            }
+            
+        }
+        ,{
+            "path" : "pages/goodsInfo/goodsInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/updateUserInfo/updateUserInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+        {
+            "path" : "pages/user/car/car",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/order/order",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
@@ -49,7 +104,7 @@
     ],
 
 	"tabBar": {
-		"color": "#7A7E83",
+		"color": "#000",
 		"selectedColor": "#3D4C46",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
@@ -80,13 +135,13 @@
 		]
 	},
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
+		// "navigationBarTextStyle": "F8F8F8",
+		// "navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#354e44"
+		// "backgroundColor": "#F8F8F8"
 		// 编译到h5平台去掉页面标题
-		"h5": {
-			"titleNView": false
-		}
+		// "h5": {
+		// 	"titleNView": false
+		// }
 	}
 }

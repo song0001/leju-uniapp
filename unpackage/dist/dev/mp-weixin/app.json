@@ -4,17 +4,19 @@
     "pages/user/user",
     "pages/find/find",
     "pages/kind/kind",
-    "pages/user/login/login"
+    "pages/user/login/login",
+    "pages/kind/kindList/kindList",
+    "pages/goodsInfo/goodsInfo",
+    "pages/user/updateUserInfo/updateUserInfo",
+    "pages/user/car/car",
+    "pages/user/order/order"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarBackgroundColor": "#354e44"
   },
   "tabBar": {
-    "color": "#7A7E83",
+    "color": "#000",
     "selectedColor": "#3D4C46",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
