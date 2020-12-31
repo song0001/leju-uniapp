@@ -53,6 +53,9 @@
 		findAllCartItem,
 		delCartItems
 	} from "../../../api/user/car/index.js"
+	import {
+		addPreOrder
+	} from '../../../api/user/order/index.js'
 	// import 
 	export default {
 		data() {
@@ -123,20 +126,40 @@
 			add(item) {
 				item.quantity++
 			},
-		// 点击结算
-		settle(){
-			uni.navigateTo({
-				url:'../order/order'
-			})
+			// 点击结算
+			settle() {
+				  var orderItemList=[]
+               this.carList.forEach(el=>{	   
+				  if(el.isChecked){	
+					  var obj={
+						  // cartId:el.id,
+						  productId:el.productId,
+						  productQuantity:el.quantity,
+						  productSkuId:el.productSkuId
+						  }
+						  orderItemList.push(obj)
+					   }	   
+				   })
+				   // console.log(orderItemList)
+				addPreOrder({
+                orderItemList
+				}).then(res => {
+				// 返回一个订单id
+					// console.log(res)
+					var orderId=res.data.orderId
+					uni.navigateTo({
+						url:`../order/order?id=${orderId}`
+					})
+				})
 			}
+
 		},
 		onLoad() {
-			this.init()
-		},
-		// onShow() {
-		// 	this.init()
-		// }
+				this.init()
+			}
 	}
+	
+	
 </script>
 
 <style lang="scss" scoped>
@@ -225,16 +248,17 @@
 			.allChecked {
 				display: flex;
 			}
-			.total{
-				    width: 104px;
-				    height: 40px;
-				    background: #354e44;
-				    border-radius: 14px;
-				    color: #fff;
-				    font-size: 18px;
-				    line-height: 40px;
-				    text-align: center;
-				}
+
+			.total {
+				width: 104px;
+				height: 40px;
+				background: #354e44;
+				border-radius: 14px;
+				color: #fff;
+				font-size: 18px;
+				line-height: 40px;
+				text-align: center;
+			}
 		}
 	}
 </style>

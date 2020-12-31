@@ -96,7 +96,7 @@
             "path" : "pages/user/order/order",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "乐居",
                 "enablePullDownRefresh": false
             }
             

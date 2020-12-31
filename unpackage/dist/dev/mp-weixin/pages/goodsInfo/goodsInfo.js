@@ -439,11 +439,11 @@ var mpHtml = function mpHtml() {Promise.all(/*! require.ensure | components/mp-h
       console.log(e);this.num = e.currentTarget.dataset.index;}, cut: function cut() {if (this.number > 0) {this.number--;}}, add: function add() {this.number++;}, // 点击确定
     sure: function sure() {if (this.skuList.length < 1) {this.goodsInfo.skuList = [];return;}var obj = { "productId": this.goodsInfo.id, "productSkuId": this.goodsInfo.skuList[this.num].id, "quantity": this.number };if (this.isCart) {//是添加到购物车
         (0, _index.addCart)(obj).then(function (res) {console.log(res);uni.showToast({ title: "添加成功" });});} else {//是立即购买
-      }} }, onLoad: function onLoad(options) {var _this2 = this;(0, _index.productDetail)(options.id).then(function (res) {console.log(res);_this2.goodsInfo = res.data.product;_this2.pic = res.data.product.albumPics.split(','); // 收藏图标显示
+      }} }, onLoad: function onLoad(options) {var _this2 = this;(0, _index.productDetail)(options.id).then(function (res) {// 自定义导航头
+      uni.setNavigationBarTitle({ title: res.data.product.name });console.log(res);_this2.goodsInfo = res.data.product;_this2.pic = res.data.product.albumPics.split(','); // 收藏图标显示
       var collectedList = uni.getStorageSync("collectedList");var item = collectedList.find(function (ele) {return ele.id == res.data.product.id;});if (item) {// 本地已经存储过对应的商品 收藏的图片展示
         res.data.product.isCollected = true;} else {res.data.product.isCollected = false;} // 要收藏的商品
-      _this2.infos = res.data.product;console.log(_this2.infos); // 自定义导航头
-      uni.setNavigationBarTitle({ title: res.data.product.name }); // uni.setNavigationBarColor({
+      _this2.infos = res.data.product;console.log(_this2.infos); // uni.setNavigationBarColor({
       // 	frontColor: '#ffffff',
       // 	navigationBarBackgroundColor: "#354e44"
       // })

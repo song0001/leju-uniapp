@@ -143,6 +143,7 @@
 		productDetail,
 		addCart
 	} from '../../api/goodsInfo/index.js'
+		import {addPreOrder} from '../../api/user/order/index.js'
 	import mpHtml from '@/components/mp-html/mp-html'
 	import login from "../../api/login.js"
 	export default {
@@ -255,10 +256,10 @@
 			},
 			// 点击确定
 			sure() {
-				if(this.skuList.length<1){
-				this.goodsInfo.skuList=[]
-				return 
-					}
+				if (this.skuList.length < 1) {
+					this.goodsInfo.skuList = []
+					return
+				}
 				var obj = {
 					"productId": this.goodsInfo.id,
 					"productSkuId": this.goodsInfo.skuList[this.num].id,
@@ -267,20 +268,62 @@
 				if (this.isCart) { //是添加到购物车
 					addCart(obj).then(res => {
 						console.log(res)
-					 uni.showToast({
-						title: "添加成功"
+						if (res.success) {
+							uni.showToast({
+								title: "添加成功"
+							})
+						} else {
+							uni.showToast({
+								title: res.message,
+								icon:'none'
+							})
+						}
+						this.isShow = false
 					})
-			
-					})
-			
-				} else { //是立即购买
 
+				} else { //是立即购买  提交订单
+				var orderItemList= {
+					 "orderItemList": [
+					    {
+					      "productId":this.goodsInfo.id,
+					      "productQuantity": this.number,
+					      "productSkuId": this.goodsInfo.skuList[this.num].id
+					    }
+					  ]
 				}
+				addPreOrder(orderItemList).then(res=>{
+					console.log(res)
+					if(res.success){
+						uni.showToast({
+							title: "购买成功,1秒后跳转到订单确认页",
+							// duration:3000,
+							success(res){
+								setTimeout(() => {
+									uni.navigateTo({
+										url: '../user/order/order'
+									})
+								}, 1000)
+								}
+					
+						})
+
+				    	this.isShow = false
+						}
+					})
+				}
+				
+				
 
 			}
 		},
 		onLoad(options) {
+
 			productDetail(options.id).then(res => {
+				// 自定义导航头
+				uni.setNavigationBarTitle({
+					title: res.data.product.name,
+
+				});
 				console.log(res)
 				this.goodsInfo = res.data.product
 				this.pic = res.data.product.albumPics.split(',')
@@ -297,11 +340,7 @@
 				// 要收藏的商品
 				this.infos = res.data.product;
 				console.log(this.infos)
-				// 自定义导航头
-				uni.setNavigationBarTitle({
-					title: res.data.product.name,
 
-				});
 				// uni.setNavigationBarColor({
 				// 	frontColor: '#ffffff',
 				// 	navigationBarBackgroundColor: "#354e44"
