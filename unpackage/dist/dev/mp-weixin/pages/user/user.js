@@ -390,7 +390,8 @@ var _default = { data: function data() {return { isShow: false, nickname: '', us
     login: function login() {// this.isShow=true
       uni.navigateTo({ url: "./login/login" });}, // 点击修改用户信息
     goUpdateUserInfo: function goUpdateUserInfo() {uni.navigateTo({ url: "./updateUserInfo/updateUserInfo" });}, // 点击跳转到购物车
-    goCar: function goCar() {uni.navigateTo({ url: "./car/car" });} }, onShow: function onShow() {var _this = this;var token = uni.getStorageSync("token");if (token) {(0, _index.getMemberInfo)().then(function (res) {console.log(res); // uni.setStorageSync("UserInfo",res.data.userInfo)
+    goCar: function goCar() {uni.navigateTo({ url: "./car/car" });}, // 跳转到地址
+    goAddress: function goAddress() {uni.navigateTo({ url: './address/address' });} }, onShow: function onShow() {var _this = this;var token = uni.getStorageSync("token");if (token) {(0, _index.getMemberInfo)().then(function (res) {console.log(res); // uni.setStorageSync("UserInfo",res.data.userInfo)
         _this.nickname = res.data.userInfo.nickname;_this.username = res.data.userInfo.username;_this.icon = res.data.userInfo.icon;});this.isShow = true;}_login.default.onShow();} };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

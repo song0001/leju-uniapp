@@ -293,14 +293,19 @@
 				}
 				addPreOrder(orderItemList).then(res=>{
 					console.log(res)
+					var orderId=res.data.orderId
+					
 					if(res.success){
 						uni.showToast({
 							title: "购买成功,1秒后跳转到订单确认页",
 							// duration:3000,
 							success(res){
+								
+								// console.log(orderId)
 								setTimeout(() => {
 									uni.navigateTo({
-										url: '../user/order/order'
+								
+										url: `../user/order/order?id=${orderId}`
 									})
 								}, 1000)
 								}

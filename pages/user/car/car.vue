@@ -147,9 +147,13 @@
 				// 返回一个订单id
 					// console.log(res)
 					var orderId=res.data.orderId
+					if(orderId){			
 					uni.navigateTo({
 						url:`../order/order?id=${orderId}`
 					})
+					}else{
+						return false
+					}
 				})
 			}
 

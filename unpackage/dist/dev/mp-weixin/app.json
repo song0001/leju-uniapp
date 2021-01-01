@@ -9,7 +9,8 @@
     "pages/goodsInfo/goodsInfo",
     "pages/user/updateUserInfo/updateUserInfo",
     "pages/user/car/car",
-    "pages/user/order/order"
+    "pages/user/order/order",
+    "pages/user/address/address"
   ],
   "subPackages": [],
   "window": {

@@ -5,11 +5,11 @@
 				等待支付
 			</view>
 			<view class="address-des">
-				新乡市
+				去选择收货地址
 			</view>
 		</view>
 		<view class="orderCard">
-			<view class="">
+			<view class="title">
 				<view class="">
 					订单编号:{{orderBase.orderSn}}
 				</view>
@@ -23,16 +23,37 @@
 				<image :src="item.productPic" mode=""></image>
 				<view class="info">
 					<view class="p1">
-
+						<view class="title">
+							{{item.productName}}
+						</view>
+						<view class="price">
+							¥{{item.productPrice}}元
+						</view>
 					</view>
 					<view class="p2">
-
+						<view class="">
+							编号:{{item.productSn}}
+						</view>
+						<view class="">
+							x{{item.productQuantity}}
+						</view>
 					</view>
 					<view class="p3">
-
+						规格 :<view class="" v-for="ele in JSON.parse(item.productAttr)">
+								{{ele.key}}:{{ele.value}}	
+						</view>
 					</view>
 				</view>
+			</view>	
+			<view class="total-price">
+				合计{{orderBase.totalAmount}}
 			</view>
+			<view class="btns">
+				<view class="btn">
+					确认付款
+				</view>
+			</view>
+			
 		</view>
 	</view>
 </template>
@@ -51,6 +72,7 @@
 				orderItems: []
 			};
 		},
+	
 		methods: {
 			init() {
 				getPreOrderById(this.orderId).then(res => {
@@ -92,6 +114,85 @@
 			padding: 30rpx 0;
 		}
 	}
-	.orderCard{
+
+	.orderCard {
+		width: 672rpx;
+		box-sizing: border-box;
+		padding: 36rpx;
+		border-radius: 24rpx;
+		background-color: #fff;
+		margin: 30rpx auto;
+		font-size: 24rpx;
+		color: #3e3e3e;
+
+		>.title {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 2rpx solid #f1ece7;
+			padding-bottom: 30rpx;
 		}
+
+		.sku-block {
+			display: flex;
+			border-bottom: 2rpx solid #f1ece7;
+			padding: 30rpx 0;
+			align-items: center;
+
+			image {
+				width: 162rpx;
+				height: 162rpx;
+
+				flex-shrink: 0;
+			}
+
+			.info {
+				width: 470rpx;
+				margin-left: 28rpx;
+
+				.p1 {
+					display: flex;
+					justify-content: space-between;
+					font-size: 26rpx;
+					line-height: 74rpx;
+				}
+
+				.p2 {
+					display: flex;
+					justify-content: space-between;
+					font-size: 22rpx;
+					color: #8d8d8d;
+					line-height: 30rpx;
+					margin-top: 4rpx;
+				}
+				.p3{
+					display: flex;
+					justify-content: flex-start;	
+					font-size: 22rpx;
+					    color: #8d8d8d;
+					    line-height: 30rpx;
+				}
+			}
+		}
+		.total-price{
+			    font-size: 26rpx;
+			    line-height: 36rpx;
+			    text-align: right;
+		}
+		.btns{
+			display: flex;
+			justify-content: flex-end;
+			margin-top: 20rpx;
+		.btn{
+			    width: 62px;
+			    height: 50rpx;
+			    border: 2rpx solid #2d4f43;
+			    font-size: 26rpx;
+			    border-radius: 10rpx;
+			    color: #2d4f43;
+			    text-align: center;
+			    line-height: 50rpx;
+                
+		}
+		}
+	}
 </style>

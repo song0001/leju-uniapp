@@ -101,6 +101,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/user/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 
 	"tabBar": {

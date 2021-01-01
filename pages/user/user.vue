@@ -11,7 +11,7 @@
 						{{nickname}}
 					</view>
 					<view class="username">
-					用户名:{{username}}	
+						用户名:{{username}}
 					</view>
 				</view>
 			</view>
@@ -97,7 +97,7 @@
 					文章收藏
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" @tap="goAddress">
 				<image src="../../static/icons/address.png" mode=""></image>
 				<view class="title">
 					地址
@@ -127,52 +127,61 @@
 
 <script>
 	import login from "../../api/login.js"
-	import {getMemberInfo} from "../../api/user/index.js"
+	import {
+		getMemberInfo
+	} from "../../api/user/index.js"
 	export default {
 		data() {
 			return {
 				isShow: false,
-				nickname:'',
-				username:'',
-				icon:''
+				nickname: '',
+				username: '',
+				icon: ''
 			};
 		},
-		methods:{
+		methods: {
 			// 点击登录
-			login(){
+			login() {
 				// this.isShow=true
 				uni.navigateTo({
-					url:"./login/login"
+					url: "./login/login"
 				})
-				},
-				// 点击修改用户信息
-				goUpdateUserInfo(){
-					uni.navigateTo({
-						url:"./updateUserInfo/updateUserInfo"
-					})
-					},
-					// 点击跳转到购物车
-					goCar(){
-						uni.navigateTo({
-							url:"./car/car"
-						})
-						}
 			},
-	     onShow(){
-			 var token=uni.getStorageSync("token")
-			 if(token){
-				 getMemberInfo().then(res=>{
-					 console.log(res)
+			// 点击修改用户信息
+			goUpdateUserInfo() {
+				uni.navigateTo({
+					url: "./updateUserInfo/updateUserInfo"
+				})
+			},
+			// 点击跳转到购物车
+			goCar() {
+				uni.navigateTo({
+					url: "./car/car"
+				})
+			},
+			// 跳转到地址
+			goAddress() {
+				uni.navigateTo({
+					url: './address/address'
+				})
+			}
+
+		},
+		onShow() {
+			var token = uni.getStorageSync("token")
+			if (token) {
+				getMemberInfo().then(res => {
+					console.log(res)
 					// uni.setStorageSync("UserInfo",res.data.userInfo)
-					 this.nickname=res.data.userInfo.nickname
-					 this.username=res.data.userInfo.username
-					 this.icon=res.data.userInfo.icon
-					 })
-				 this.isShow=true
-				 }
+					this.nickname = res.data.userInfo.nickname
+					this.username = res.data.userInfo.username
+					this.icon = res.data.userInfo.icon
+				})
+				this.isShow = true
+			}
 			login.onShow()
-			 }
-			
+		}
+
 	}
 </script>
 
@@ -185,40 +194,46 @@
 		display: flex;
 		margin-bottom: 60rpx;
 		justify-content: space-between;
+
 		// 登录
-.login{
-	display: flex;
-	justify-content: flex-start;
-	
-	.avator {
-		width: 150rpx;
-		height: 150rpx;
-		border-radius: 50%;
-		background-color: blue;
-		margin-right: 32rpx;
-		overflow: hidden;
-		image{
-			width: 100%;
-			height: 100%;
+		.login {
+			display: flex;
+			justify-content: flex-start;
+
+			.avator {
+				width: 150rpx;
+				height: 150rpx;
+				border-radius: 50%;
+				background-color: blue;
+				margin-right: 32rpx;
+				overflow: hidden;
+
+				image {
+					width: 100%;
+					height: 100%;
+				}
 			}
-	}
-	.info{
-		display: flex;
-		    font-size: 14px;
-		flex-direction: column;
-		justify-content: center;
-		.username{
-			    font-size: 26rpx;
-			    color: #999;
+
+			.info {
+				display: flex;
+				font-size: 14px;
+				flex-direction: column;
+				justify-content: center;
+
+				.username {
+					font-size: 26rpx;
+					color: #999;
+				}
+
+				.nickname {
+					font-size: 40rpx;
+					font-weight: 600;
+				}
+
+			}
 		}
-		.nickname{
-			font-size: 40rpx;
-			font-weight: 600;
-		}
-		   
-		}
-	}
-	// 未登录
+
+		// 未登录
 		.nologin {
 			display: flex;
 			justify-content: flex-start;
@@ -229,11 +244,11 @@
 				border-radius: 50%;
 				background-color: #c8c7cc;
 				margin-right: 32rpx;
-			
+
 			}
 
 			.tishi {
-				    font-size: 14px;
+				font-size: 14px;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
