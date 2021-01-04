@@ -3164,6 +3164,26 @@ module.exports = parser;
 
 /***/ }),
 
+/***/ 157:
+/*!*****************************************************************!*\
+  !*** C:/Users/song/Desktop/leju/leju/api/user/address/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.findAllAddress = findAllAddress;var _request = _interopRequireDefault(__webpack_require__(/*! ../../request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+//查询地址列表
+function findAllAddress(data) {
+  return (0, _request.default)({
+    url: "/lejuClient/address/findAllAddress",
+    data: data,
+    method: "get" });
+
+}
+
+/***/ }),
+
 /***/ 17:
 /*!*********************************************************!*\
   !*** C:/Users/song/Desktop/leju/leju/api/home/index.js ***!

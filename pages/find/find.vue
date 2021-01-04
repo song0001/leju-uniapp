@@ -26,8 +26,8 @@
 							<image src="../../static/icons/view.png" mode=""></image>
 							{{item.viewCount}}
 						</view>
-						<view class="right" :data-index="index"  @tap='collect'>
-							<image v-if="collect_index==index" src="../../static/icons/collect1.png" mode=""></image>
+						<view class="right"   @tap='collect(item.id)'>
+							<image v-if="!item.isCollected" src="../../static/icons/collect1.png" mode=""></image>
 							<image v-else src="../../static/icons/collect1-active.png" mode=""></image>
 						</view>
 					</view>
@@ -68,8 +68,7 @@
 				list1: [],
 				list2: [],
 				isShow: 'wz',
-				isCollect: true,
-				collect_index:""
+			
 			};
 		},
 		methods: {
@@ -94,19 +93,63 @@
 				})
 			},
 			// 收藏
-			collect(e) {
-				// console.log(item,index)
-
-this.collect_index=e.currentTarget.dataset.index
+			collect(id) {
+			var list = uni.getStorageSync("articleList");
+			var item = this.list1.find(ele =>{
+				return ele.id == id
+			})
+			if(list){ // 判断本地是否存在收藏数据
+				// var item = list.includes(val.id)
+				// 获取本地id对应的下标
+				const index = list.findIndex(ele =>ele.id == id);
+				// this.articleList 找到的元素
 				
-				console.log(e.currentTarget.dataset.index) 
-				this.isCollect =!false
+				if(index>=0){ // 本地有收藏的id  取消收藏
+					
+					item.isCollected = false
+					list.splice(index,1);
+					uni.setStorageSync("articleList",list);
+					uni.showToast({
+						title:"取消成功"
+					})
+					return 
+				}else{ // 本地没收藏的id  收藏 
+					item.isCollected = true
+					
+					list.push(item)
+				}
+			}else{ // 本地暂时没有收藏数据  收藏 
+				
+				item.isCollected = true
+				list = [];
+				
+				list.push(item);
+				
+			}
+			uni.setStorageSync("articleList",list);
+			uni.showToast({
+				title:"收藏成功"
+			})
+
+
 			}
 		},
 		onLoad() {
 			// 精选文章
 			findArticleByPage(this.start, 2).then(res => {
 				console.log(res)
+				var list = uni.getStorageSync("articleList");
+				if(list){ // 如果本地存在收藏数据
+					res.data.rows.forEach(ele =>{
+						var bol = list.find(item =>item.id == ele.id);
+						ele.isCollected = bol ? true : false
+					})
+				}else{
+					res.data.rows.forEach(ele =>{
+						ele.isCollected = false
+					})
+				}
+				
 				this.list1 = res.data.rows
 			})
 

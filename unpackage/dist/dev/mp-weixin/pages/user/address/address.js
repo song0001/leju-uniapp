@@ -128,27 +128,34 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {};
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
-  },
-  methods: {
-    // 跳转到地址
-    goAddress: function goAddress() {
-      uni.navigateTo({
-        url: './' });
 
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+
+
+
+
+
+
+var _index = __webpack_require__(/*! ../../../api/user/address/index.js */ 157); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return {};}, methods: { init: function init() {(0, _index.findAllAddress)().then(function (res) {console.log(res);
+      });
+    } },
+
+  onLoad: function onLoad() {
+    this.init();
+  } };exports.default = _default;
 
 /***/ })
 
