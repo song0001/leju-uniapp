@@ -1,8 +1,8 @@
 <template>
 	<view>
 	<view class="list">
-		<view class="item" v-for="item in list" :key='item.id'>
-			<view class="center">
+		<view class="item" v-for="item in list" :key='item.id' @tap="select(item)" >
+			<view class="center" >
 				<view class="name-tel">
 					<view class="name">
 						{{item.name}}
@@ -15,12 +15,17 @@
 					{{item.phoneNumber}}
 				</view>
 			</view>
-			<view class="right">
+			<view class="right"  @tap.stop="edit(item)">
 				<view class="icon edit">
 					<image src="../../../static/icons/edit.png" mode=""></image>
 				</view>
 			</view>
 		</view>
+	</view>
+	<view class="add">
+	  <view class="btn" @tap="add">
+	    新增地址
+	  </view>
 	</view>
 	</view>
 </template>
@@ -30,7 +35,8 @@
 	export default {
 		data() {
 			return {
-				list:[]
+				list:[],
+			 isSelect: false,
 			};
 		},
 		methods:{
@@ -39,10 +45,37 @@
 					console.log(res)
 					this.list=res.data.items
 				})
-				}
+				},
+			select(item) {
+			  //是否需要返回地址(从订单确认页跳过来选收货地址)
+			  if (!this.isSelect) {
+			    return;
+			  }
+			  uni.setStorageSync("selectAddress",item);
+			  uni.navigateBack({
+			  	delta:1
+			  });	 
+			},	
+			add() {
+				console.log(21111)
+			  uni.navigateTo({
+			   url:"./addAddress/addAddress"
+			  });
+			},
+			edit(item) {
+				console.log(item)
+				uni.navigateTo({
+				  url: "./addAddress/addAddress?addressId="+item.id
+				});
+			},
+			
 		},
-		onLoad() {
+		onLoad(e) {
 			this.init()
+			// console.log(e.type)
+			if(e.type == "select"){
+				 this.isSelect = true;
+				}
 		}
 	}
 </script>
@@ -102,5 +135,26 @@
 							}
 					}
 		}
+	}
+	.add {
+		display: flex;
+	  position: fixed;
+	  bottom: 0;
+	  width: 100%;
+	  height: 120upx;
+	  justify-content: center;
+	  align-items: center;
+	  .btn {
+	    box-shadow: 0upx 5upx 10upx rgba(0, 0, 0, 0.4);
+	    width: 70%;
+	    height: 80upx;
+	    border-radius: 80upx;
+	    background-color: #354E44;
+	    color: #fff;
+	    justify-content: center;
+	    align-items: center;
+	  display: flex;
+	  
+	  }
 	}
 </style>

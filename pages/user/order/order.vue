@@ -4,9 +4,14 @@
 			<view class="title">
 				等待支付
 			</view>
-			<view class="address-des">
+			<view v-if="!addressInfo.name" class="address-des" @tap='selectAddress'>
 				去选择收货地址
 			</view>
+			<view v-else class="address-des" @tap='selectAddress'>
+				<view class="send-name">姓名:{{addressInfo.name}} 电话号码: {{addressInfo.phoneNumber}}</view>
+				<view class="address">收货地址: {{addressInfo.province}}-{{addressInfo.city}}-{{addressInfo.region}}{{addressInfo.detailAddress}}</view>
+			</view>
+			
 		</view>
 		<view class="orderCard">
 			<view class="title">
@@ -62,14 +67,17 @@
 	import {
 		getPreOrderById
 	} from '../../../api/user/order/index.js'
+	import mix from "@/mixins/index.js"
 	export default {
+		mixins:[mix],
 		data() {
 			return {
-				start: 1,
-				limit: 10,
+
 				orderId: '',
 				orderBase: '',
-				orderItems: []
+				orderItems: [],
+			// 地址详情
+				addressInfo:{}
 			};
 		},
 	
@@ -80,7 +88,22 @@
 					this.orderBase = res.data.orderBase
 					this.orderItems = res.data.orderItems
 				})
-			}
+				this.initSelAddress()
+			},
+			// 选择收货地址
+			selectAddress(){
+				uni.navigateTo({
+					url:'/pages/user/address/address?type=select'
+				})
+				},
+				// 初始化预选地址
+				initSelAddress(){
+					var addressInfo = uni.getStorageSync("selectAddress");
+					if(addressInfo){
+						this.addressInfo = addressInfo
+						console.log(this.addressInfo)
+					}
+				},
 		},
 		onLoad(options) {
 			// console.log(options)
@@ -89,6 +112,9 @@
 
 
 		},
+		onShow() {
+			this.checkLogins(this.init);
+		}
 
 	}
 </script>
@@ -112,6 +138,9 @@
 			border-bottom: 1px solid #ccc;
 			box-sizing: border-box;
 			padding: 30rpx 0;
+			>.address{
+				padding: 0 0;
+			}
 		}
 	}
 

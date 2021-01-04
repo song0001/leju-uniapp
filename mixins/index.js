@@ -1,11 +1,11 @@
 var obj = {
 	methods:{
-		checkLogin1(val){ // 去判断用户是否登录 如果登录 就发送请求 如果没登录 取消请求发送
-			if(this.checkLogins()){ // true
+		checkLogins(val){ // 去判断用户是否登录 如果登录 就发送请求 如果没登录 取消请求发送
+			if(this.checkHasLogined()){ // true
 				val();	
 			}
 		},
-		checkLogins(){
+		checkHasLogined(){
 			var val = uni.getStorageSync("token");
 			if(val){
 				return true

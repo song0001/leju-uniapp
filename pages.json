@@ -110,6 +110,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/user/address/addAddress/addAddress",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 
 	"tabBar": {
