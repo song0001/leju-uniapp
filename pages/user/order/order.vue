@@ -54,7 +54,7 @@
 				合计{{orderBase.totalAmount}}
 			</view>
 			<view class="btns">
-				<view class="btn">
+				<view class="btn" @tap='doPay'>
 					确认付款
 				</view>
 			</view>
@@ -65,7 +65,7 @@
 
 <script>
 	import {
-		getPreOrderById
+		getPreOrderById,addConfirmOrder
 	} from '../../../api/user/order/index.js'
 	import mix from "@/mixins/index.js"
 	export default {
@@ -104,6 +104,37 @@
 						console.log(this.addressInfo)
 					}
 				},
+				pays(){
+					var orderItemList = [];
+					this.orderItems.forEach(ele =>{
+						var obj = {
+						  "cartId": ele.cartId,
+						  "productId": ele.productId,
+						  "productQuantity": ele.productQuantity,
+						  "productSkuId": ele.productSkuId
+						}
+						orderItemList.push(obj)
+					})
+					var obj = {
+						  "addressId": this.addressInfo.id,
+						  "orderId": this.orderId,
+						  "orderItemList": orderItemList,
+						  "payType": 0,
+						  "sourceType": 1
+					}
+					addConfirmOrder(obj)
+					.then(res =>{
+						console.log(res)
+						if(res.success){
+							uni.navigateTo({
+								url: `/pages/user/order/payment/payment?orderId=${res.data.orderId}`
+							})
+						}
+					})
+				},
+				doPay() {
+					this.checkLogins(this.pays);
+				}
 		},
 		onLoad(options) {
 			// console.log(options)

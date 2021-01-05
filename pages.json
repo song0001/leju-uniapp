@@ -101,26 +101,62 @@
 		{
 			"path": "pages/user/address/address",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "乐居",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/user/address/addAddress/addAddress",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "乐居",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/user/order/orderList",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "乐居",
 				"enablePullDownRefresh": false
 			}
 
 		}
-	],
+        ,{
+            "path" : "pages/user/order/payment/payment",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/order/payResult/payResult",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/order/orderBack/orderBack",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/order/orderBackInfo/orderBackInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "乐居",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 
 	"tabBar": {
 		"color": "#000",

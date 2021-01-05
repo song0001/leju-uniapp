@@ -45,31 +45,31 @@
 				我的订单
 			</view>
 			<view class="bottom">
-				<view class="item">
+				<view class="item" @tap='goOrderList0'>
 					<image src="../../static/icons/icon-pay.png" mode=""></image>
 					<view class="">
 						待付款
 					</view>
 				</view>
-				<view class="item">
+				<view class="item" @tap='goOrderList1'>
 					<image src="../../static/icons/pay-done.png" mode=""></image>
 					<view class="">
 						已付款
 					</view>
 				</view>
-				<view class="item">
+				<view class="item" @tap='goOrderList2'>
 					<image src="../../static/icons/icon-car.png" mode=""></image>
 					<view class="">
 						已发货
 					</view>
 				</view>
-				<view class="item">
+				<view class="item" @tap='goOrderList3'>
 					<image src="../../static/icons/icon-done.png" mode=""></image>
 					<view class="">
 						已收货
 					</view>
 				</view>
-				<view class="item">
+				<view class="item" @tap='goOrderList9'>
 					<image src="../../static/icons/icon-back.png" mode=""></image>
 					<view class="">
 						售后
@@ -164,8 +164,33 @@
 				uni.navigateTo({
 					url: './address/address'
 				})
-			}
-
+			},
+              // 跳转到订单列表
+			goOrderList0(){
+				uni.navigateTo({
+					url:`order/orderList?type=0`
+				})
+			},
+			goOrderList1(){
+				uni.navigateTo({
+					url:`order/orderList?type=1`
+				})
+			},
+			goOrderList2(){
+				uni.navigateTo({
+					url:`order/orderList?type=2`
+				})
+			},
+			goOrderList3(){
+				uni.navigateTo({
+					url:`order/orderList?type=3`
+				})
+			},
+            goOrderList9(){
+				uni.navigateTo({
+					url:`order/orderList?type=9`
+				})
+			},
 		},
 		onShow() {
 			var token = uni.getStorageSync("token")

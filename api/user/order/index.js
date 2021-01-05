@@ -110,5 +110,6 @@ export {
 	addOrderReturnApply,
 	orderReturnApplys,
 	orderReturnInfo,
-	_clearUserOrders
+	_clearUserOrders,
+	addConfirmOrder
 }
