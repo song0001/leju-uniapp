@@ -45,81 +45,82 @@
 				}
 			}
 
-		}
-	    ,{
-            "path" : "pages/user/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "乐居",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/kind/kindList/kindList",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+		}, {
+			"path": "pages/user/login/login",
+			"style": {
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/kind/kindList/kindList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 				// "navigationBarBackgroundColor":"#354e44"
-            }
-            
-        }
-        ,{
-            "path" : "pages/goodsInfo/goodsInfo",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/updateUserInfo/updateUserInfo",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "乐居",
-                "enablePullDownRefresh": false
-            }
-            
-        },
-        {
-            "path" : "pages/user/car/car",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "乐居",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/order/order",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "乐居",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/address/address",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/address/addAddress/addAddress",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+			}
+
+		}, {
+			"path": "pages/goodsInfo/goodsInfo",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/updateUserInfo/updateUserInfo",
+			"style": {
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/user/car/car",
+			"style": {
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/order/order",
+			"style": {
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/user/order/orderList",
+			"style": {
+				"navigationBarTitleText": "乐居",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/user/address/address",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/address/addAddress/addAddress",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/order/orderList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
 
 	"tabBar": {
 		"color": "#000",

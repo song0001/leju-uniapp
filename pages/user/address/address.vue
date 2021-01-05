@@ -57,7 +57,7 @@
 			  });	 
 			},	
 			add() {
-				console.log(21111)
+				// console.log(21111)
 			  uni.navigateTo({
 			   url:"./addAddress/addAddress"
 			  });
@@ -71,11 +71,14 @@
 			
 		},
 		onLoad(e) {
-			this.init()
+			
 			// console.log(e.type)
 			if(e.type == "select"){
 				 this.isSelect = true;
 				}
+		},
+		onShow() {
+			this.init()
 		}
 	}
 </script>
