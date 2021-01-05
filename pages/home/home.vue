@@ -5,7 +5,8 @@
 			<image src="../../static/icons/cart.png" mode=""></image>
 		</view>
 		<view class="uni-padding-wrap">
-			<swiper indicator-active-color="rgb(216, 216, 216)" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper indicator-active-color="rgb(216, 216, 216)" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay"
+			 :interval="interval" :duration="duration">
 				<swiper-item v-for="item in list" :key='item.id'>
 					<view>
 						<image class="img" :src="item.pic" mode=""></image>
@@ -52,7 +53,8 @@
 			<view class="title">
 				热门推荐
 			</view>
-			<swiper circular="true"  easing-function="easeOutCubic" display-multiple-items="3" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper circular="true" easing-function="easeOutCubic" display-multiple-items="3" :autoplay="autoplay" :interval="interval"
+			 :duration="duration">
 				<swiper-item v-for="item in hotList" :key="item.id" @tap="goGoodsInfo(item.id)">
 					<view class="item">
 						<image :src="item.pic" mode=""></image>
@@ -69,11 +71,11 @@
 				新品推荐
 			</view>
 			<view class="list">
-				<view class="item" v-for="item in latestProducts" :key="item.id"  @tap="goGoodsInfo(item.id)">
+				<view class="item" v-for="item in latestProducts" :key="item.id" @tap="goGoodsInfo(item.id)">
 					<image :src="item.pic" mode=""></image>
 					<view class="des">
-						<view class="name">		
-						{{item.name}}
+						<view class="name">
+							{{item.name}}
 						</view>
 						<view class="">
 							价格:{{item.price}}
@@ -82,34 +84,34 @@
 				</view>
 			</view>
 		</view>
-		
-<!-- 猜你喜欢 -->
-   <view class="like">
-   	 <view class="title">
-   	 	猜你喜欢
-   	 </view>
-	 <view class="list">
-	 	<view class="item" v-for="item in saleMostProducts" :key='item.id'  @tap="goGoodsInfo(item.id)">
-	 		<image :src="item.pic" mode=""></image>
-			<view class="des">
-				
-			<view class="name">
-				{{item.brandName}}
+
+		<!-- 猜你喜欢 -->
+		<view class="like">
+			<view class="title">
+				猜你喜欢
 			</view>
-			<view class="price">
-				<view class="">
-				¥{{item.price}} 	
+			<view class="list">
+				<view class="item" v-for="item in saleMostProducts" :key='item.id' @tap="goGoodsInfo(item.id)">
+					<image :src="item.pic" mode=""></image>
+					<view class="des">
+
+						<view class="name">
+							{{item.brandName}}
+						</view>
+						<view class="price">
+							<view class="">
+								¥{{item.price}}
+							</view>
+							<view class="">
+								乐居
+							</view>
+						</view>
+
+					</view>
 				</view>
-				<view class="">
-					   乐居
-				</view>
 			</view>
-				  
-			</view>
-	 	</view>
-	 </view>
-   </view>
-		
+		</view>
+
 	</view>
 </template>
 
@@ -128,7 +130,7 @@
 
 				indicatorDots: true,
 				autoplay: true,
-				interval:2000,
+				interval: 2000,
 				duration: 500,
 				circular: true,
 				list: [],
@@ -136,72 +138,70 @@
 				recommendList: [],
 				hotList: [],
 				latestProducts: [],
-				saleMostProducts:[]
+				saleMostProducts: []
 			};
+		},
+		onPullDownRefresh() {
+			this.init();
+			// console.log(1)
 		},
 		methods: {
 			// 跳转到商品详情
-goGoodsInfo(ids){
-	 console.log(ids)
-	 uni.navigateTo({
-	 	url:`../goodsInfo/goodsInfo?id=${ids}`
-	 	})
-	},
-	// 跳转到商品列表页
-	goGoodsList(ids){
-		 console.log(ids)
-		uni.navigateTo({
-			url:`../kind/kindList/kindList?id=${ids}`
-			})
-		}
+			goGoodsInfo(ids) {
+				console.log(ids)
+				uni.navigateTo({
+					url: `../goodsInfo/goodsInfo?id=${ids}`
+				})
+			},
+			// 跳转到商品列表页
+			goGoodsList(ids) {
+				console.log(ids)
+				uni.navigateTo({
+					url: `../kind/kindList/kindList?id=${ids}`
+				})
+			},
+		async init(){
+				// 轮播数据
+				this.list = (await bannerAds()).data.items;
+				// console.log("异步请求",await bannerAds())
+				// 分类
+				this.category = (await findAllCategory()).data.items[0].children;
+				// 限时活动
+				this.recommendList = (await recommendList()).data.items;
+				// 热门推荐
+				this.hotList = (await hotList()).data.items;
+				// 新品推荐
+				this.latestProducts = (await latestProducts(1, 14)).data.productList;
+				// 猜你喜欢
+				this.saleMostProducts = (await saleMostProducts()).data.items;
+				uni.stopPullDownRefresh()
+				}
 		},
 		onLoad() {
-			bannerAds().then(res => {
-					// console.log(res);
-					this.list = res.data.items
-				}),
-				findAllCategory().then(res => {
-					// console.log(res)
-					this.category = res.data.items[0].children
-				}),
-				recommendList().then(res => {
-					// console.log(res)
-					this.recommendList = res.data.items
-				})
-			hotList().then(res => {
-				console.log(res)
-				this.hotList = res.data.items
-			})
-			latestProducts(1, 14).then(res => {
-				// console.log(res)
-				this.latestProducts = res.data.rows
-			})
-			saleMostProducts().then(res=>{
-				// console.log(res)
-				this.saleMostProducts=res.data.items
-			}
-				)
-		},
+			this.init()
+		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.tops{
-		    position: fixed;
-		    top: 0;
-		    left: 0;
-		    width: calc(100% - 30px);
-		    z-index: 9999;
-			display: flex;
-			    align-items: center;
-				    justify-content:flex-end;
-				    padding: 30rpx;
-					image{
-						    width: 42rpx;
-						    height: 42rpx;
-							margin-left: 46rpx;
-						}
+	.tops {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: calc(100% - 30px);
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding: 30rpx;
+
+		image {
+			width: 42rpx;
+			height: 42rpx;
+			margin-left: 46rpx;
 		}
+	}
+
 	.uni-padding-wrap {
 		height: 360rpx;
 
@@ -334,39 +334,45 @@ goGoodsInfo(ids){
 	// 新品推荐
 	.new {
 		padding: 0 30rpx;
-.title{
-	margin-bottom: 30rpx;
-}
+
+		.title {
+			margin-bottom: 30rpx;
+		}
+
 		.list {
-           display: flex;
+			display: flex;
 			overflow: auto;
-			.item{
+
+			.item {
 				box-sizing: border-box;
 				padding: 40rpx;
-				width: 590rpx;	
-				height:260rpx;
+				width: 590rpx;
+				height: 260rpx;
 				margin-right: 40rpx;
 				background-color: #FFFFFF;
 				display: flex;
 				align-items: center;
 				// flex: 0 0 auto;
 				flex-shrink: 0;
-				   border-radius: 10rpx;
-					.des{	
-						overflow: hidden;
-					
-						height: 100%;
+				border-radius: 10rpx;
+
+				.des {
+					overflow: hidden;
+
+					height: 100%;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					.name{
+
+					.name {
 						overflow: hidden;
 						text-overflow: ellipsis;
 						white-space: nowrap;
 					}
-						}
-			image {
-					display: block;		
+				}
+
+				image {
+					display: block;
 					width: 194rpx;
 					height: 168rpx;
 					margin-right: 20px;
@@ -376,47 +382,52 @@ goGoodsInfo(ids){
 			}
 		}
 	}
-	.like{
-		.title{
+
+	.like {
+		.title {
 			padding: 30rpx;
 			// margin-bottom: 30rpx;
 		}
-		.list{
+
+		.list {
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			padding:0 30rpx ;
+			padding: 0 30rpx;
 			box-sizing: border-box;
-		
-			.item{
-				width:324rpx;
+
+			.item {
+				width: 324rpx;
 				background-color: #fff;
 				height: 418rpx;
 				margin: 20rpx 0;
 				border-radius: 10rpx;
-				image{
+
+				image {
 					width: 100%;
 					height: 238rpx;
 				}
-				.des{
+
+				.des {
 					padding: 36rpx;
 					box-sizing: border-box;
-					}
-					.name{
-						line-height: 19px;
-						    margin-top: 4px;
-						    font-weight: 700;
-							margin-bottom: 20rpx;
-							font-size: 26rpx
-						}
-				.price{
+				}
+
+				.name {
+					line-height: 19px;
+					margin-top: 4px;
+					font-weight: 700;
+					margin-bottom: 20rpx;
+					font-size: 26rpx
+				}
+
+				.price {
 					font-size: 26rpx;
 					display: flex;
 					justify-content: space-between;
 				}
-				}
 			}
+		}
 	}
-	
 </style>

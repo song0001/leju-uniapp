@@ -4,7 +4,7 @@
 			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "乐居",
-				"enablePullDownRefresh": false,
+				"enablePullDownRefresh": true,
 				// #ifdef APP-PLUS
 				"navigationStyle": "custom",
 				// #endif
