@@ -173,7 +173,9 @@
 			/* #ifdef MP-WEIXIN */
 			 top: 0;
 			/* #endif */
-
+  /* #ifdef APP-PLUS */
+           top: 0;
+          /* #endif */
 			left: 0;
 			width: 100%;
 			height: 62rpx;
