@@ -110,6 +110,7 @@ export default {
             // 发送请求删除地址
 			delAddressInfo(this.addressInfo.id)
 			.then(res =>{
+				console.log(res)
 				if(res.success == true){
 					uni.showToast({
 						title:"删除成功"

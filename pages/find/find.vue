@@ -76,7 +76,7 @@
 				this.index = e.currentTarget.dataset.index
 
 				// 精选文章
-				findArticleByPage(this.start, 2).then(res => {
+				findArticleByPage(this.start,2).then(res => {
 					console.log(res)
 					this.isShow = 'wz'
 					this.list1 = res.data.rows

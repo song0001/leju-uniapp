@@ -168,6 +168,7 @@
 				this.category = (await findAllCategory()).data.items[0].children;
 				// 限时活动
 				this.recommendList = (await recommendList()).data.items;
+					console.log(this.recommendList)
 				// 热门推荐
 				this.hotList = (await hotList()).data.items;
 				// 新品推荐
