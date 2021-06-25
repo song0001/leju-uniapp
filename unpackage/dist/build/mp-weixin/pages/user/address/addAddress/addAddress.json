@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "simple-address": "/components/simple-address/simple-address"
+  }
+}

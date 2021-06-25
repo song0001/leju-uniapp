@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/kind/kind",
+    "pages/find/find",
+    "pages/user/user",
+    "pages/user/login/login",
+    "pages/user/register/register",
+    "pages/user/userInfo/userInfo",
+    "pages/order/order",
+    "pages/order/confirmOrder/confirmOrder",
+    "pages/user/address/address",
+    "pages/order/confirmOrder/payment/payment",
+    "pages/order/confirmOrder/payResult/payResult",
+    "pages/user/collected/collected",
+    "pages/user/address/addAddress/addAddress",
+    "pages/user/car/car",
+    "pages/user/updateUserInfo/updateUserInfo",
+    "pages/find/articleInfo/articleInfo",
+    "pages/user/articleList/articleList",
+    "pages/user/resetPassword/resetPassword"
+  ],
+  "subPackages": [
+    {
+      "root": "kindPackage",
+      "pages": [
+        "list/list",
+        "list/info/info"
+      ]
+    },
+    {
+      "root": "orderPackage",
+      "pages": [
+        "orderBack/orderBack",
+        "orderBackInfo/orderBackInfo"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "乐 居",
+    "navigationBarBackgroundColor": "#354E44",
+    "backgroundColor": "#F1ECE7"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#435950",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/kind/kind",
+        "iconPath": "static/icons/kind.png",
+        "selectedIconPath": "static/icons/kind-active.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "iconPath": "static/icons/find.png",
+        "selectedIconPath": "static/icons/find-active.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "static/icons/mine.png",
+        "selectedIconPath": "static/icons/mine-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

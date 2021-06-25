@@ -1,0 +1,262 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+	    {
+            "path" : "pages/home/home",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": true,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/kind/kind",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/find/find",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/user",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/login/login",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/register/register",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/userInfo/userInfo",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"h5":{
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/confirmOrder/confirmOrder",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/address/address",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/confirmOrder/payment/payment",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/confirmOrder/payResult/payResult",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/collected/collected",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/address/addAddress/addAddress",
+            "style" :                                                                                    
+            {
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/car/car",
+            "style" :                                                                                    
+            {
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/updateUserInfo/updateUserInfo",
+            "style" :                                                                                    
+            {
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/find/articleInfo/articleInfo",
+            "style" :                                                                                    
+            {
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/articleList/articleList",
+            "style" :                                                                                    
+            {
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/resetPassword/resetPassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"subPackages": [
+		{
+	        "root": "kindPackage",
+	        "pages": [
+				{
+				    "path" : "list/list",
+				    "style" :                                                                                    
+				    {
+				        "enablePullDownRefresh": true
+				    }
+				    
+				}
+				,{
+				    "path" : "list/info/info",
+				    "style" :                                                                                    
+				    {
+				        "enablePullDownRefresh": false
+				    }
+				    
+				}
+			]
+	    },
+		{
+		    "root": "orderPackage",
+		    "pages": [
+				{
+				    "path" : "orderBack/orderBack",
+				    "style" :                                                                                    
+				    {
+				        "enablePullDownRefresh": false
+				    }
+				    
+				}
+				,{
+				    "path" : "orderBackInfo/orderBackInfo",
+				    "style" :                                                                                    
+				    {
+				        "enablePullDownRefresh": false
+				    }
+				    
+				}
+			]
+		}
+	],
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#435950",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/home/home",
+			"iconPath": "static/icons/home.png",
+			"selectedIconPath": "static/icons/home-active.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/kind/kind",
+			"iconPath": "static/icons/kind.png",
+			"selectedIconPath": "static/icons/kind-active.png",
+			"text": "分类"
+		}, {
+			"pagePath": "pages/find/find",
+			"iconPath": "static/icons/find.png",
+			"selectedIconPath": "static/icons/find-active.png",
+			"text": "发现"
+		}, {
+			"pagePath": "pages/user/user",
+			"iconPath": "static/icons/mine.png",
+			"selectedIconPath": "static/icons/mine-active.png",
+			"text": "我的"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "乐 居",
+		"navigationBarBackgroundColor": "#354E44",
+		"backgroundColor": "#F1ECE7"
+	
+	}
+}
